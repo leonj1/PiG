@@ -26,7 +26,7 @@ jobs:
       contents: read
       id-token: write
       attestations: write
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -194,7 +194,7 @@ jobs:
     permissions:
       actions: read
       contents: read
-    runs-on: ${{ matrix.runner }}
+    runs-on: "${{ (matrix.runner) == 'ubuntu-24.04' && fromJSON('[\"self-hosted\",\"linux\",\"x64\"]') || (matrix.runner) == 'macos-15' && fromJSON('[\"self-hosted\",\"macOS\",\"ARM64\"]') || (matrix.runner) == 'windows-2025' && fromJSON('[\"self-hosted\",\"windows\",\"x64\"]') || (matrix.runner) }}"
     timeout-minutes: 15
     strategy:
       fail-fast: false
@@ -255,7 +255,7 @@ jobs:
       contents: read
       id-token: write
       attestations: write
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -370,7 +370,7 @@ jobs:
       contents: write
     environment:
       name: release
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4

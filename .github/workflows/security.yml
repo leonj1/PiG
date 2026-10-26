@@ -21,7 +21,7 @@ concurrency:
 jobs:
   source-assurance:
     name: Source assurance
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -130,7 +130,7 @@ jobs:
 
   secret-scan:
     name: Secret scanning
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -150,7 +150,7 @@ jobs:
   dependency-review:
     name: Dependency review
     if: github.event_name == 'pull_request' && github.event.repository.private == false
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     permissions:
       contents: read
     steps:
@@ -165,7 +165,7 @@ jobs:
   codeql:
     name: CodeQL (${{ matrix.language }})
     if: github.event.repository.private == false
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 30
     permissions:
       contents: read

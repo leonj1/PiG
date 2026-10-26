@@ -21,7 +21,7 @@ jobs:
   analysis:
     name: Scorecard analysis
     if: github.event.repository.private == false
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     permissions:
       security-events: write
       id-token: write

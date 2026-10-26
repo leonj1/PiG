@@ -52,7 +52,7 @@ env:
 jobs:
   build:
     name: Build ${{ matrix.image }} image
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     permissions:
       contents: read
     timeout-minutes: 45
@@ -206,7 +206,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    runs-on: ubuntu-24.04
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 20
     strategy:
       fail-fast: false
